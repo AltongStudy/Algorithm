@@ -5,7 +5,7 @@ function solution(arr) {
 	console.log(`total sum is ${sum}`);
 	let answer = arr;
 
-	// 정답에서는 루프 인덱스 범위를 arr.lenght보다 하나 작은 숫자로 두었다.
+	// 정답에서는 루프 인덱스 범위를 arr.length보다 하나 작은 숫자로 두었다.
 	// 그래서 i가 8일 때 for문 자체가 돌지는 않지만, 내 경우엔 돌게 된다.
 	// 그래도 어차피 내부 for문은 안 돌아서 사실 별 차이는 없다.
 	for (let i = 0; i < arr.length; i++) {
