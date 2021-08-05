@@ -27,3 +27,23 @@ console.log(solution(str));
  * 1. 강의를 보니 array 객체에 새로 할당해주는 방식으로 풀었는데 좋은 방법이라 느꼈다.
  * 2. String Prototype의 indexOf 메소드가 정의 되어 있는걸 처음 알았다.
  */
+
+
+/**
+ * 개선 코드
+ */
+
+function solution(str) {
+    let answer = "";
+     
+    for(let i = 0; i < str.length; i++) {
+        if (str.indexOf(str[i]) === i) {
+            answer += str[i];
+        }
+    }
+    return answer;
+ }
+
+const str = "ksekkset";
+
+console.log(solution(str));
