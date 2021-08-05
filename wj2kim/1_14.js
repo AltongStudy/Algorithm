@@ -1,29 +1,29 @@
 /**
  * 문제 
  * 
- * 소문자로 된 단어(문자열)가 입력되면 그 단어의 가운데 문자를 출력하는 프로그램을 작성하세요.
- * 단 단어의 길이가 짝수일 경우 가운데 2개의 문자를 출력합니다.
+ * N개의 문자열이 입력되면 그 중 가장 긴 문자열을 출력하는 프로그램을 작성하세요.
  */
 
 /**
  * 접근 방법 
  * 
- * 1. 전체 길이 / 2 를 해서 나오는 숫자가 정수면 짝수 아니라면 홀수
- * 2. 홀수면 해당 숫자를 반올림처리 (Math.floor) 한 수를 index 삼아 문자를 추출하면 되고
- * 3. 정수로 떨어지면 해당 숫자와 해당 숫자 - 1 을 index 삼아 문자를 추출 하면 되겠다. 
+ * 1. 문자열의 길이는 서로 다르기 떄문에 정답은 무조건 하나이다.
+ * 2. 문자열이기 때문에 문자열인지 확인하는 절차가 필요하다.
+ * 3. 반복문과 함께 String.prototype의 length 메소드를 사용하면 쉽게 해결 할 수 있다.
  */
 
  
-function solution(str) {
+function solution(arr) {
     let answer = "";
-    const middle = str.length / 2;
-    const isEven = Number.isInteger(middle);
-	const arr = [...str];
-
-    return isEven ? arr[middle - 1] + arr[middle] : arr[Math.floor(middle)];
+    for (let i = 0; i < arr.length; i++) {
+        if ( arr[i].length > answer.length ) {
+            answer = arr[i];
+        }
+    }
+    return answer;
 }
 
 
-const str = "study";
+const arr = [5, "teacher", "time", "student", "beautiful", "good"];
 
-console.log(solution(str));
+console.log(solution(arr));
