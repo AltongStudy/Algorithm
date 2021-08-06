@@ -20,8 +20,8 @@ console.log(solution(arr));
 
 // Case 2.
 function solution2(arr) {
-  let sum = arr.reduce((arr, cur) => arr + cur, 0);
-  return arr.filter( item => !(arr.indexOf(sum - 100 - item) > 0));
+  let rest = arr.reduce((arr, cur) => arr + cur, 0) - 100;
+  return arr.filter( item => !(arr.indexOf(rest - item) > 0));
 }
 
 let arr2=[20, 7, 2, 23, 19, 10, 38, 8, 13];
