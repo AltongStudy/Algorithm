@@ -34,7 +34,7 @@ function solution(arr) {
             sub = 0;
         }
     }
-    return total + sub;
+    return total + factorial(sub);
 }
   
   
