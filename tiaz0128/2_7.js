@@ -31,17 +31,15 @@ function solution(arr){
   let cnt = 0;
 
   const len = arr.length
-  const dummy = Array.from({length : len}, () => 0)
 
-  arr.splice(0, 0, dummy)
-  arr.push(dummy)
-
-  for(let i = 1; i <= len; i++){
+  for(let i = 0; i <  len; i++){
     for(let j = 0; j < len; j++){
-      const up    = arr[i-1][j] || 0
-      const down  = arr[i+1][j] || 0
-      const left  = arr[i][j-1] || 0
-      const right = arr[i][j+1] || 0
+      const up    = (arr[i-1] ?? [])[j] ?? 0
+      const down  = (arr[i+1] ?? [])[j] ?? 0
+      const left  = (arr[i] ?? [])[j-1] ?? 0
+      const right = (arr[i] ?? [])[j+1] ?? 0
+
+      console.log(up, down, left, right)
 
       if(arr[i][j] > up && arr[i][j] > down && arr[i][j] > left && arr[i][j] > right){
         cnt++;
