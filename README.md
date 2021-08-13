@@ -1,4 +1,6 @@
-# *본격 알고리즘 통달 스터디*
+![사용중 제거 금지](https://user-images.githubusercontent.com/79143800/127815963-caa3f370-817e-42d8-a582-9c91277dbd62.png)
+
+# *[본격 알고리즘 통달 스터디](https://www.notion.so/Altong-390a6db2d6c74a0f9f5f373e8eb91da6)*
 
 *통달 - 사물의 이치나 지식, 기술 따위를 훤히 알거나 아주 능란하게 하다.*
 
