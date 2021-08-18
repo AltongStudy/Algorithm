@@ -2,9 +2,9 @@
 
 function solution(s){
     let answer = "NO"
+    let lowerCase = s.toLowerCase()
     
     for(let i=0; i<s.length; i++){
-        let lowerCase = s.toLowerCase()
         if(lowerCase.indexOf(lowerCase[0]) === lowerCase.indexOf(lowerCase[s.length-1])) answer="YES"
     }
     return answer;
