@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+      let answer = 0;
+
+      /**
+       * 봉우리 조건
+       * 같은 행에서 직전 및 다음 인덱스 값보다 크고
+       * 직전 행 및 다음 행에서 같은 인덱스 값보다 커야 한다.
+       */
+
+      for (let i = 0; i < arr.length; i++) {
+
+        for (let j = 0; j < arr.length; j++) {
+          const northHeight = arr[i - 1] ? arr[i - 1][j] : 0;
+          const eastHeight = arr[i][j + 1] || 0;
+          const southHeight = arr[i + 1] ? arr[i + 1][j] : 0;
+          const westHeight = arr[i][j - 1] || 0;
+
+          if (arr[i][j] > northHeight && arr[i][j] > eastHeight && arr[i][j] > southHeight && arr[i][j] > westHeight) answer += 1;
+        }
+      }
+
+      return answer;
+    }
+
+    let arr = [[5, 3, 7, 2, 3],
+    [3, 7, 1, 6, 1],
+    [7, 2, 5, 3, 4],
+    [4, 3, 6, 4, 1],
+    [8, 7, 3, 5, 2]];
+
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
