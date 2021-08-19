@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+      return arr.filter((element, index) => {
+        // index가 마이너스이면 undefined 그래서 첫번째 숫자의 경우 그 이전 숫자가 없어서 undefined가 된다.
+        // 그럴 경우 0을 넣어서 비교하도록 했다. 왜냐하면 처리 문제 조건에서 1부터 100 이하의 자연수만 들어오기 때문이다.
+        return arr[index - 1] ?? 0 < element
+      });
+
+    }
+
+    let arr = [7, 3, 9, 5, 6, 12];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
