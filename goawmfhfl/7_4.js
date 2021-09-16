@@ -6,12 +6,10 @@ function solution(arr) {
   
     for (let i = 1; i < answer.length; i++) {
       for (let j = i; j >= 0; j--) {
-        if (answer[j] > answer[j - 1])
-          [answer[j], answer[j - 1]] = [answer[j - 1], answer[j]];
+        if (answer[j-1] > answer[j]) [answer[j-1], answer[j]] = [answer[j], answer[j-1]];
         else break;
       }
     }
-  
     return answer;
   }
   
