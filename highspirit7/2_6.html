@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+      let maxOfSums = 0;
+      const columnSums = Array(arr.length).fill(0);
+      let firstDiagonalSum = 0, secondDiagonalSum = 0;
+
+      // 각 행의 합 계산
+      arr.forEach((array, i) => {
+        const rowSum = array.reduce(function (a, b) {
+          return a + b
+        })
+        console.log(`rowSum : ${rowSum}`);
+        if (rowSum > maxOfSums) maxOfSums = rowSum;
+
+
+        array.forEach((number, j) => {
+          // 각 열의 합 계산
+          columnSums[j] += number;
+
+          // 두 대각선의 합 계산
+          if (i === j) firstDiagonalSum += number;
+          if (i + j === arr.length - 1) secondDiagonalSum += number;
+        })
+
+        if (i === array.length - 1) {
+          columnSums.forEach(sum => {
+            console.log(`columnSum : ${sum}`);
+            if (sum > maxOfSums) maxOfSums = sum;
+          })
+
+          console.log(`firstDiagonal : ${firstDiagonalSum}`);
+          console.log(`secondDiagonal : ${secondDiagonalSum}`);
+          if (firstDiagonalSum > maxOfSums) maxOfSums = firstDiagonalSum;
+          if (secondDiagonalSum > maxOfSums) maxOfSums = secondDiagonalSum;
+        }
+      });
+
+      return maxOfSums;
+    }
+
+    let arr = [[10, 13, 10, 12, 15],
+    [12, 39, 30, 23, 11],
+    [11, 25, 50, 53, 15],
+    [19, 27, 29, 37, 27],
+    [19, 13, 30, 13, 19]];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
