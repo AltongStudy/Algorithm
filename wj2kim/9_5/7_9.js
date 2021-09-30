@@ -1,7 +1,7 @@
 /**
  * 문제
  *
- * 이분검색
+ * 결혼식
  *
  */
 
@@ -9,35 +9,37 @@
  * 접근 방법
  *
  * 강의를 참고하였다.
- * 주어진 배열을 오름차순으로 정렬한다.
- * parseInt를 통해 배열의 mid index 값을 구한다.
- * mid index 값을 가지고 while 문을 통해 반씩 쪼개며 대상 넘버를 찾는다.
+ * 주어진 2차원 배열의 input을 시작시간과 끝시간을 구분하여 timeLine이라는 배열로 다시 만든다.
+ * timeLine 배열을 정렬한다. 시간이 같으면 charCodeAt을 통해 end가 start 보다 먼저 정렬되도록 만든다.
+ * 순회를 하며 index[1] 의 값이 s 면 count를 올리고 아니면 내린다.
  *
  */
 
-function solution(target, arr) {
-  let answer;
-  arr.sort((a, b) => a - b); // 오름차순 정렬
-  let lt = 0,
-    rt = arr.length - 1;
-
-  while (lt <= rt) {
-    let mid = parseInt((lt + rt) / 2);
-    if (arr[mid] === target) {
-      answer = mid + 1; // index 번호
-      break;
-    } else if (arr[mid] > target) {
-      rt = mid - 1;
-    } else {
-      lt = mid + 1;
-    }
+function solution(arr) {
+  let answer = Number.MIN_SAFE_INTEGER;
+  let timeLine = [];
+  for (let x of arr) {
+    timeLine.push([x[0], "s"]);
+    timeLine.push([x[1], "e"]);
+  }
+  timeLine.sort((a, b) =>
+    a[0] === b[0] ? a[1].charCodeAt() - b[1].charCodeAt() : a[0] - b[0]
+  );
+  let count = 0;
+  for (let x of timeLine) {
+    x[1] === "s" ? count++ : count--;
+    answer = Math.max(answer, count);
   }
 
   return answer;
 }
 
-const target = 32;
+const arr = [
+  [14, 18],
+  [12, 15],
+  [15, 20],
+  [20, 30],
+  [5, 14],
+];
 
-const arr = [23, 87, 65, 12, 57, 32, 99, 81];
-
-solution(target, arr);
+solution(arr);

@@ -1,45 +1,46 @@
 /**
  * 문제
  *
- * 결혼식
+ * 회의실 배정
  *
  */
 
 /**
  * 접근 방법
  *
- * 강의를 참고하였다.
- * 주어진 2차원 배열의 input을 시작시간과 끝시간을 구분하여 timeLine이라는 배열로 다시 만든다.
- * timeLine 배열을 정렬한다. 시간이 같으면 charCodeAt을 통해 end가 start 보다 먼저 정렬되도록 만든다.
- * 순회를 하며 index[1] 의 값이 s 면 count를 올리고 아니면 내린다.
+ * 끝나는 시간을 기준으로 정렬을 한다 만약 같다면 시작시간을 기준으로 정렬한다.
+ * 순회를 통해 시작시간을 이전 끝나는 시간과 비교를 하여 참일경우 count를 증가시킨다.
  *
  */
 
 function solution(arr) {
-  let answer = Number.MIN_SAFE_INTEGER;
-  let timeLine = [];
-  for (let x of arr) {
-    timeLine.push([x[0], "s"]);
-    timeLine.push([x[1], "e"]);
-  }
-  timeLine.sort((a, b) =>
-    a[0] === b[0] ? a[1].charCodeAt() - b[1].charCodeAt() : a[0] - b[0]
-  );
+  let end = 0;
   let count = 0;
-  for (let x of timeLine) {
-    x[1] === "s" ? count++ : count--;
-    answer = Math.max(answer, count);
-  }
 
-  return answer;
+  arr
+    .sort((a, b) => (a[1] === b[1] ? a[0] - b[0] : a[1] - b[1]))
+    .forEach((a) => {
+      if (end <= a[0]) {
+        count++;
+        end = a[1];
+      }
+    });
+
+  return count;
 }
 
 const arr = [
-  [14, 18],
-  [12, 15],
-  [15, 20],
-  [20, 30],
-  [5, 14],
+  [1, 4],
+  [2, 3],
+  [3, 5],
+  [4, 6],
+  [5, 7],
+];
+
+const arr2 = [
+  [3, 3],
+  [2, 3],
+  [1, 3],
 ];
 
 solution(arr);
