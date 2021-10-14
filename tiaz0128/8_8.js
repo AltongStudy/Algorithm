@@ -1,9 +1,10 @@
 function solution(n, m){
   const arr = Array.from({length : m}, () => 0)
+  const result = []
 
   function DFS(level){
-    if(level === n) {
-      return
+    if(level === m) {
+      return result.push([...arr])
     }
     else {
       for(let i = 1; i <= n; i++){
@@ -15,7 +16,7 @@ function solution(n, m){
   }
   DFS(0)
 
-  return false
+  return result
 }
 
-console.log(solution(3, 3));
+console.log(solution(3, 2));
