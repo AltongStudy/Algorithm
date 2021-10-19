@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    // 가위 - 1, 바위 - 2, 보 - 3
+    // 배열 a 는 A가 낸 가위바위보
+    // 배열 b 는 B가 낸 가위바위보
+    // 2는 1만 이길 수 있고, 1은 3만 이길 수 있고, 3은 2만 이길 수 있다.
+    // 2와 1 => 2가 승리, 1과 3 => 1이 승리, 3과 2 => 3이 승리
+    // 2와 1의 합은 3, 1과 3의 합은 4, 3과 2의 합은 5
+    function solution(a, b) {
+      let answer = [];
+
+      for (let i = 0; i < b.length; i++) {
+        if (a[i] === b[i]) {
+          answer.push('D');
+        } else if (a[i] + b[i] === 3) {
+          a[i] === 2 ? answer.push('A') : answer.push('B')
+        } else if (a[i] + b[i] === 4) {
+          a[i] === 1 ? answer.push('A') : answer.push('B')
+        } else if (a[i] + b[i] === 5) {
+          a[i] === 3 ? answer.push('A') : answer.push('B')
+        }
+      }
+
+
+      return answer;
+    }
+
+    let a = [2, 3, 3, 1, 3];
+    let b = [1, 1, 2, 2, 3];
+    console.log(solution(a, b));
+  </script>
+</body>
+
+</html>

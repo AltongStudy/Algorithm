@@ -1,0 +1,30 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    // 앞에 있는 모든 요소가 자신보다 작을 때 카운팅 해야한다.
+    function solution(arr) {
+      let currentHighest = 0, result = 0;
+
+      arr.forEach(height => {
+        if (currentHighest < height) {
+          currentHighest = height;
+
+          result += 1;
+        }
+      })
+
+      return result;
+    }
+
+    let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
